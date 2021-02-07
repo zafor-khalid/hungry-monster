@@ -1,3 +1,4 @@
+//SEARCH FUNCTION ACTIVATION
 function searchMeal() {
     const searchFood = document.getElementById('food');
     document.getElementById('resultParent').innerHTML = '';
@@ -9,9 +10,11 @@ function searchMeal() {
             displayFood(data);
             foodIngredient(data);
         })
+        .catch(error => alert('NOT FOUND! TRY ANOTHER'));
 }
 
 
+//DISPLAY VARIOUS MEALS
 function displayFood(data) {
     data.meals.forEach(food => {
         const newElement = document.createElement('div');
@@ -30,6 +33,7 @@ function displayFood(data) {
 }
 
 
+//SHOW SELECTED FOOD'S INGREDIENT
 function foodIngredient(data) {
     const addEvent = document.getElementById('resultParent');
     addEvent.addEventListener('click', function () {
@@ -48,7 +52,6 @@ function foodIngredient(data) {
                     <ul id="ingredients">
                     </ul>
                     </div>`;
-
                 document.getElementById('details').appendChild(newElement);
                 while (i != 10) {
                     let ingredient = 'strIngredient' + (i++);
@@ -60,7 +63,5 @@ function foodIngredient(data) {
                 }
             }
         });
-
-
     })
 }
